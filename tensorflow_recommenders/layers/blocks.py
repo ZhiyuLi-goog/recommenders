@@ -76,7 +76,6 @@ class MLP(tf.keras.layers.Layer):
               bias_initializer=tf.keras.initializers.RandomUniform(
                   minval=-tf.math.sqrt(1.0 / bottom_dim),
                   maxval=tf.math.sqrt(1.0 / bottom_dim),
-                  seed=0
               ),
           )
       )
@@ -92,7 +91,6 @@ class MLP(tf.keras.layers.Layer):
             bias_initializer=tf.keras.initializers.RandomUniform(
                 minval=-tf.math.sqrt(1.0 / bottom_dim),
                 maxval=tf.math.sqrt(1.0 / bottom_dim),
-                seed=0
             ),
         )
     )
