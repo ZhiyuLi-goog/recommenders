@@ -175,34 +175,8 @@ class Ranking(models.Model):
     # We need to work around a bug in mypy - tuple narrowing
     # based on length checks doesn't work.
     # See https://github.com/python/mypy/issues/1178 for details.
-    if len(inputs) == 2:
-      inputs = cast(
-          Tuple[
-              Dict[str, tf.Tensor],
-              tf.Tensor
-          ],
-          inputs
-      )
-      features, labels = inputs
-      sample_weight = None
-    elif len(inputs) == 3:
-      inputs = cast(
-          Tuple[
-              Dict[str, tf.Tensor],
-              tf.Tensor,
-              Optional[tf.Tensor],
-          ],
-          inputs
-      )
-      features, labels, sample_weight = inputs
-    else:
-      raise ValueError(
-          "Inputs should be either a tuple of (features, labels), "
-          "or a tuple of (features, labels, sample weights). "
-          "Got a length {len(inputs)} tuple instead: {inputs}."
-      )
-    feature = inputs
-    label = inputs['clicked']
+    features = inputs
+    labels = inputs['clicked']
     outputs = self(features, training=training)
 
     loss = self._task(labels, outputs, sample_weight=None)
