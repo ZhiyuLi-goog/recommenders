@@ -64,7 +64,10 @@ class MLP(tf.keras.layers.Layer):
               num_units,
               activation=self.activation,
               use_bias=self.use_bias,
-              kernel_initializer=tf.keras.initializers.HeUniform(),
+              kernel_initializer=tf.keras.initializers.RandomUniform(
+                minval=-tf.math.sqrt(1.0 / bottom_dim),
+                maxval=tf.math.sqrt(1.0 / bottom_dim),
+              ),
               bias_initializer=tf.keras.initializers.RandomUniform(
                   minval=-tf.math.sqrt(1.0 / bottom_dim),
                   maxval=tf.math.sqrt(1.0 / bottom_dim),
@@ -79,7 +82,10 @@ class MLP(tf.keras.layers.Layer):
             self._units[-1],
             activation=self.final_activation,
             use_bias=self.use_bias,
-            kernel_initializer=tf.keras.initializers.HeUniform(),
+            kernel_initializer=tf.keras.initializers.RandomUniform(
+                minval=-tf.math.sqrt(1.0 / bottom_dim),
+                maxval=tf.math.sqrt(1.0 / bottom_dim),
+            ),
             bias_initializer=tf.keras.initializers.RandomUniform(
                 minval=-tf.math.sqrt(1.0 / bottom_dim),
                 maxval=tf.math.sqrt(1.0 / bottom_dim),
