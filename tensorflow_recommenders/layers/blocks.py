@@ -49,14 +49,6 @@ class MLP(tf.keras.layers.Layer):
     self.activation = activation
     self.final_activation = final_activation
 
-    for num_units in units[:-1]:
-      self._sublayers.append(
-          tf.keras.layers.Dense(
-              num_units, activation=activation, use_bias=use_bias))
-    self._sublayers.append(
-        tf.keras.layers.Dense(
-            units[-1], activation=final_activation, use_bias=use_bias))
-
 
 
   # def get_uniform_initializer(self, bottom_dim):
