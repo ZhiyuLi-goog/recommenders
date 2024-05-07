@@ -123,7 +123,7 @@ class MultiLayerDCN(tf.keras.layers.Layer):
           tf.keras.layers.Dense(
               self._projection_dim,
               kernel_initializer=tf.keras.initializers.VarianceScaling(
-                mode='fan_avg', distribution='untruncated_normal',seed = self.seeds.pop()),
+                mode='fan_avg', distribution='untruncated_normal'),
               kernel_regularizer=self._kernel_regularizer,
               use_bias=False,
           )
@@ -132,7 +132,7 @@ class MultiLayerDCN(tf.keras.layers.Layer):
           tf.keras.layers.Dense(
               last_dim,
               kernel_initializer=tf.keras.initializers.VarianceScaling(
-                mode='fan_avg', distribution='untruncated_normal',seed = self.seeds.pop()),
+                mode='fan_avg', distribution='untruncated_normal'),
               bias_initializer='zeros',
               kernel_regularizer=self._kernel_regularizer,
               bias_regularizer=self._bias_regularizer,
