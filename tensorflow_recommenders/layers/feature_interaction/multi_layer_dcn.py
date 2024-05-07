@@ -122,7 +122,8 @@ class MultiLayerDCN(tf.keras.layers.Layer):
       self._dense_u_kernels.append(
           tf.keras.layers.Dense(
               self._projection_dim,
-              kernel_initializer='glorot_normal',
+              kernel_initializer=tf.keras.initializers.VarianceScaling(
+                mode='fan_avg', distribution='untruncated_normal',seed = self.seeds.pop()),
               kernel_regularizer=self._kernel_regularizer,
               use_bias=False,
           )
@@ -130,7 +131,8 @@ class MultiLayerDCN(tf.keras.layers.Layer):
       self._dense_v_kernels.append(
           tf.keras.layers.Dense(
               last_dim,
-              kernel_initializer='glorot_normal',
+              kernel_initializer=tf.keras.initializers.VarianceScaling(
+                mode='fan_avg', distribution='untruncated_normal',seed = self.seeds.pop()),
               bias_initializer='zeros',
               kernel_regularizer=self._kernel_regularizer,
               bias_regularizer=self._bias_regularizer,
